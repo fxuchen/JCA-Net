@@ -1,2 +1,2 @@
 # JCA-Net
-If this paper is accepted, we will make our code publicly available
+We plan to make our code publicly available once the paper is accepted.
