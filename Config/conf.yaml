@@ -1,0 +1,100 @@
+audionet:
+  audio_bn_params:
+    is2d: true
+    kernel_size: 1
+    out_chan: 256
+    pre_act_type: ReLU
+    pre_norm_type: gLN
+  audio_params:
+    act_type: PReLU
+    audio_net: SeparatorNet
+    hid_chan: 64
+    is2d: true
+    kernel_size: 4
+    norm_type: gLN
+    repeats: 4
+    shared: true
+  enc_dec_params:
+    act_type: null
+    bias: false
+    decoder_type: STFTDecoder
+    encoder_type: STFTEncoder
+    hop_length: 128
+    kernel_size: 3
+    norm_type: null
+    out_chan: 256
+    stride: 1
+    win: 512
+  fusion_params:
+    fusion_shared: true
+    fusion_type: JCA
+    is2d: true
+    kernel_size: 4
+  mask_generation_params:
+    RI_split: true
+    is2d: true
+    mask_act: ReLU
+    mask_generator_type: MaskGenerator
+  n_src: 1
+  pretrained_vout_chan: 512
+  video_bn_params:
+    kernel_size: -1
+  video_params:
+    act_type: PReLU
+    hid_chan: 64
+    is2d: false
+    kernel_size: 3
+    layers:
+      layer_1:
+        dropout: 0.1
+        ffn_name: FeedForwardNetwork
+        kernel_size: 3
+        layer_type: GlobalAttention
+        n_head: 8
+    norm_type: BatchNorm1d
+    repeats: 1
+    shared: true
+    stride: 2
+    upsampling_depth: 4
+    video_net: TDA_Net
+data:
+  nondefault_nsrc: 1
+  normalize_audio: false
+  sample_rate: 16000
+  segment: 2.0
+  train_dir: /home/JCA-Net/data_preprocess/LRS2/tr
+  valid_dir: /home/JCA-Net/data_preprocess/LRS2/cv
+log:
+  exp_name: JCA-Net/LRS2/
+  path: log/tmp
+  pro_name: project
+main_args:
+  checkpoint: null
+  conf_dir: /home/JCA-Net/config/lrs2_4_layer.yaml
+  exp_dir: /home/JCA-Net/LRS2/4_layers
+  help: null
+  name: null
+  nodes: 1
+optim:
+  lr: 0.001
+  optimizer: adamw
+  weight_decay: 0.1
+positional arguments: {}
+sche:
+  factor: 0.5
+  patience: 49
+training:
+  batch_size: 2
+  divide_lr_by: null
+  early_stop: true
+  epochs: 200
+  gpus:
+  half_lr: true
+  num_workers: 8
+  online_mix: false
+videonet:
+  backbone_type: resnet
+  model_name: CTCNet_Lip
+  pretrain:
+  relu_type: prelu
+  width_mult: 1.0
