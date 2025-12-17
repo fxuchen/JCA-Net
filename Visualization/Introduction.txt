@@ -1,0 +1,15 @@
+     To intuitively demonstrate the efficacy of the JCA Module, we provide a comparative visualization of Correlation Matrices (Fig. 1) and Attention Feature Maps (Fig. 2).
+      1. Limitations of Traditional Cross-Attention:
+      In the traditional Cross-Attention, the attention mechanism is strictly inter-modal relationships. For example, visual features serve as the Query (Q), while audio features serve as the Key (K) and Value (V). 
+      The drawbacks brought about by this method are as follows:
+      Since the alignment relies entirely on the visual query, any degradation in visual quality (e.g., occlusion or low frame rate) directly corrupts the retrieval process. As shown in Figure. 1 (Left), this results in blocky artifacts due to upsampling and a complete "Dead Zone" where the visual query is invalid, leading to the feature loss observed in Figure. 2 (Top).
+
+       2.Superiority of JCA Module (Ours):
+        In contrast, our JCA Module shifts the paradigm by modeling both relationships. Taking one branch of our module as an example, we employ the learned Joint Representation as the Query (Q) to attend to the audio features (K and V).
+        The Advantage: 
+        This joint query is not solely dependent on visual input. It explicitly fuses inter-modal visual cues with intra-modal audio consistency, thereby simultaneously realizing both intra-modal self-attention and inter-modal cross-attention.
+        The Results:
+        As evidenced in Fig. 1 (Right), even when visual information is missing, the audio component within the joint query successfully guides the self-attention mechanism to restore temporal continuity ("Continuity Restored"). This precise, pixel-level alignment ensures the robust recovery of fine-grained harmonic structures, as visualized in Figure. 2 (Bottom).
+
+
+       
