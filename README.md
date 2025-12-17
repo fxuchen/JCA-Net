@@ -9,4 +9,4 @@ PyTorch >= 2.1.2<br>
 CUDA >=12.2<br>
 Other dependencies in requirements.txt
 # Experimental setup
-Please check the config
+Please check the config folder
